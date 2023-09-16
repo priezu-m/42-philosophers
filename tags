@@ -56,6 +56,8 @@ philo_blocked_check	/home/peru/42-philosophers/schedueler.h	/^	volatile _Atomic 
 philosopher_number	/home/peru/42-philosophers/philosopher.h	/^	int						philosopher_number;$/;"	m	struct:s_philosopher	access:public
 print_usage	/home/peru/42-philosophers/parameters.c	/^void	print_usage(void)$/;"	f	signature:(void)
 print_usage	/home/peru/42-philosophers/parameters.h	/^void			print_usage(void);$/;"	p	signature:(void)
+print_usage_part_one	/home/peru/42-philosophers/parameters.c	/^static void	print_usage_part_one(void)$/;"	f	file:	signature:(void)
+print_usage_part_two	/home/peru/42-philosophers/parameters.c	/^static void	print_usage_part_two(void)$/;"	f	file:	signature:(void)
 private_list_index	/home/peru/42-philosophers/schedueler.h	/^	int							private_list_index;$/;"	m	struct:s_time_list	access:public
 private_queque_index	/home/peru/42-philosophers/loger.h	/^	int						private_queque_index;$/;"	m	struct:s_loger_queque	access:public
 private_queque_index	/home/peru/42-philosophers/schedueler.h	/^	int						private_queque_index;$/;"	m	struct:s_fork_yield_queque	access:public
@@ -138,6 +140,5 @@ times_of_awaking	/home/peru/42-philosophers/schedueler.h	/^	t_time_list						tim
 times_of_death	/home/peru/42-philosophers/schedueler.h	/^	t_time_list						times_of_death;$/;"	m	struct:s_schedueler_data	access:public
 times_of_finishing_meal	/home/peru/42-philosophers/schedueler.h	/^	t_time_list						times_of_finishing_meal;$/;"	m	struct:s_schedueler_data	access:public
 trunc_atoi	/home/peru/42-philosophers/parameters.c	/^static int	trunc_atoi(char *str)$/;"	f	file:	signature:(char *str)
-usage	/home/peru/42-philosophers/parameters.c	/^static char	*usage = $/;"	v	file:
 yielder_ids	/home/peru/42-philosophers/schedueler.h	/^	volatile int			*yielder_ids;$/;"	m	struct:s_fork_yield_queque	access:public
 yields	/home/peru/42-philosophers/schedueler.h	/^	t_fork_yield_queque				*yields;$/;"	m	struct:s_schedueler_data	access:public
