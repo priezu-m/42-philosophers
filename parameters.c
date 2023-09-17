@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 14:24:48                                            */
-/*   Updated:  2023/09/16 14:46:13                                            */
+/*   Updated:  2023/09/17 14:24:41                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	print_usage_part_two(void)
 		"simulation ends. If all philosophers have eaten\n"
 		"NUMBER_OF_MEALS_EACH_PHILOSOPHER_MUST_EAT meals, the simulation\n"
 		"ends. If this argument is not specified, the simulation will run\n"
-		"until a philosopher dies. Each philosopher simulated is a different\n"
-		"thread of execution\n\n"
+		"until a philosopher dies. Each philosopher is simulated whit a\n"
+		"different thread of execution.\n\n"
 		"Note: All parameters must be strings of digits forming a number\n"
 		"less than 2^32. And NUMBER_OF_PHILOSOPHERS must be at least one.\n"
 		);

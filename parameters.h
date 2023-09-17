@@ -6,20 +6,20 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 15:08:46                                            */
-/*   Updated:  2023/09/15 20:24:02                                            */
+/*   Updated:  2023/09/17 14:08:15                                            */
 /*                                                                            */
 /* ************************************************************************** */
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
 
 #ifndef PARAMETERS_H
 # define PARAMETERS_H
 
-#include <stdbool.h>
+# include <stdbool.h>
+
+;
+# pragma clang diagnostic push
+# pragma clang diagnostic warning "-Weverything"
+# pragma clang diagnostic ignored "-Wempty-translation-unit"
+# pragma clang diagnostic ignored "-Wunused-macros"
 
 typedef struct s_parameters
 {
@@ -34,6 +34,6 @@ typedef struct s_parameters
 t_parameters	get_parameters(int argc, char **argv);
 void			print_usage(void);
 
-#endif
+# pragma clang diagnostic pop
 
-#pragma clang diagnostic pop
+#endif

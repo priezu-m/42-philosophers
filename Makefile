@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -Wextra -Wno-unknown-pragmas -Wno-pragmas -flto -g3 -O0 *.c
+	gcc -Wall -Wextra -Wno-unknown-pragmas -Wno-pragmas -flto -g3 -O0 *.c -fsanitize=address,leak,undefined

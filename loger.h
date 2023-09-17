@@ -6,28 +6,28 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:23:18                                            */
-/*   Updated:  2023/09/15 20:14:40                                            */
+/*   Updated:  2023/09/17 15:02:56                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 ;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Wc11-extensions"
-
 #ifndef LOGER_H
 # define LOGER_H
 
 # include "events.h"
 # include <stdbool.h>
 
+# pragma clang diagnostic push
+# pragma clang diagnostic warning "-Weverything"
+# pragma clang diagnostic ignored "-Wempty-translation-unit"
+# pragma clang diagnostic ignored "-Wunused-macros"
+# pragma clang diagnostic ignored "-Wc11-extensions"
+
 typedef struct s_event_data
 {
 	t_events_e			event_id;
 	int					issuer_id;
-	unsigned long int	time_of_issuing;
+	long int			time_of_issuing;
 }t_event_data;
 
 //requests_comleted must be initialized to true at the beginning of the simulation
@@ -53,6 +53,10 @@ typedef struct loger_data
 	bool					launch_aborted;
 }t_loger_data;
 
-#endif
+t_loger_data	get_loger_data(volatile _Atomic bool *simulation_over,
+					int last_needed_meals_needed, int number_of_philosophers);
+void			destroy_loger_data(t_loger_data loger_data);
 
-#pragma clang diagnostic pop
+# pragma clang diagnostic pop
+
+#endif

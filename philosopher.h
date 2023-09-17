@@ -6,16 +6,9 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 15:13:37                                            */
-/*   Updated:  2023/09/15 20:13:36                                            */
+/*   Updated:  2023/09/17 14:08:42                                            */
 /*                                                                            */
 /* ************************************************************************** */
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Wc11-extensions"
 
 #ifndef PHILOSOPHER_H
 # define PHILOSOPHER_H
@@ -25,6 +18,13 @@
 # include "parameters.h"
 # include "events.h"
 # include <stdbool.h>
+
+;
+# pragma clang diagnostic push
+# pragma clang diagnostic warning "-Weverything"
+# pragma clang diagnostic ignored "-Wempty-translation-unit"
+# pragma clang diagnostic ignored "-Wunused-macros"
+# pragma clang diagnostic ignored "-Wc11-extensions"
 
 typedef struct s_philosopher
 {
@@ -36,6 +36,6 @@ typedef struct s_philosopher
 	bool					launch_aborted;
 }t_philosopher;
 
-#endif
+# pragma clang diagnostic pop
 
-#pragma clang diagnostic pop
+#endif
