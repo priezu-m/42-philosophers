@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 15:13:37                                            */
-/*   Updated:  2023/09/17 14:08:42                                            */
+/*   Updated:  2023/09/17 18:01:26                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "parameters.h"
 # include "events.h"
 # include <stdbool.h>
+# include <pthread.h>
 
 ;
 # pragma clang diagnostic push
@@ -32,9 +33,18 @@ typedef struct s_philosopher
 	t_parameters			parameters;
 	t_schedueler_data		schedueler_data;
 	t_loger_queque			loger_queque;
+	pthread_t				thread_id;
 	int						philosopher_number;
 	bool					launch_aborted;
 }t_philosopher;
+
+t_philosopher	*get_philosopher_list(volatile _Atomic bool *simulation_over,
+					t_parameters parameters, t_schedueler_data schedueler_data,
+					t_loger_queque loger_queque);
+void			destroy_philosopher_list(t_philosopher *philosopher_list);
+bool			philosopher_list_valid(t_philosopher *philosopher_list);
+void			launch_and_join_philosophers(t_philosopher *philosopher_list);
+void			*philosopher_routine(void *philosopher);
 
 # pragma clang diagnostic pop
 

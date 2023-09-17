@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:40:25                                            */
-/*   Updated:  2023/09/17 13:47:09                                            */
+/*   Updated:  2023/09/17 18:01:39                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_schedueler_data
 	t_time_list							times_of_death;
 	t_time_list							times_of_awaking;
 	t_time_list							times_of_finishing_meal;
+	pthread_t							thread_id;
 	int									number_of_philosophers;
 	bool								launch_aborted;
 }t_schedueler_data;
@@ -69,6 +70,9 @@ t_schedueler_data	get_schedueler_data(int number_of_philosophers,
 						volatile _Atomic bool *simulation_over);
 void				destroy_schedueler_data(t_schedueler_data schedueler_data);
 bool				schedueler_data_valid(t_schedueler_data schedueler_data);
+void				launch_schedueler(t_schedueler_data *schedueler_data);
+void				join_schedueler(t_schedueler_data schedueler_data);
+void				*schedueler_routine(void *schedueler_data);
 
 # pragma clang diagnostic pop
 
