@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 17:41:10                                            */
-/*   Updated:  2023/09/17 17:43:54                                            */
+/*   Updated:  2023/09/17 22:44:23                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 void	launch_loger(t_loger_data *loger_data)
 {
 	if (pthread_create(&loger_data->thread_id, NULL, loger_routine, loger_data)
-			!= 0)
+		!= 0)
 		loger_data->launch_aborted = true;
 }
 

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 13:22:00                                            */
-/*   Updated:  2023/09/17 13:48:36                                            */
+/*   Updated:  2023/09/17 22:51:00                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 #pragma clang diagnostic ignored "-Wempty-translation-unit"
 #pragma clang diagnostic ignored "-Wunused-macros"
 
-
-bool schedueler_data_valid(t_schedueler_data schedueler_data)
+bool	schedueler_data_valid(t_schedueler_data schedueler_data)
 {
 	const int	number_of_philosophers = schedueler_data.number_of_philosophers;
 
@@ -38,7 +37,7 @@ bool schedueler_data_valid(t_schedueler_data schedueler_data)
 		|| schedueler_data.times_of_awaking.times == NULL
 		|| schedueler_data.times_of_finishing_meal.list_index == NULL
 		|| schedueler_data.times_of_finishing_meal.times == NULL
-		)
+	)
 	{
 		return (false);
 	}

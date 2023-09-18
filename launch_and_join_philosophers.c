@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 17:56:15                                            */
-/*   Updated:  2023/09/17 18:06:32                                            */
+/*   Updated:  2023/09/17 22:56:21                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 void	launch_and_join_philosophers(t_philosopher *philosopher_list)
 {
-	const int	number_of_philosophers = philosopher_list[0].philosopher_number;
+	const int	number_of_philosophers
+		= philosopher_list[0].parameters.number_of_philosophers;
 	int			i;
 
 	i = 0;
@@ -33,7 +34,7 @@ void	launch_and_join_philosophers(t_philosopher *philosopher_list)
 		if (pthread_create(&philosopher_list[i].thread_id, NULL,
 				philosopher_routine, &philosopher_list[i]) != 0)
 		{
-			printf("Failed to launch philosopher %d's thread, aborting.\n", i + 1);
+			printf("Failed to launch philosopher %d, aborting.\n", i + 1);
 			*philosopher_list[i].simulation_over = true;
 			philosopher_list[i].launch_aborted = true;
 			break ;

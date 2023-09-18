@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 14:51:38                                            */
-/*   Updated:  2023/09/17 13:50:27                                            */
+/*   Updated:  2023/09/17 22:49:26                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
-static t_fork_yield_queque get_yield_queque(int number_of_philosophers)
+static t_fork_yield_queque	get_yield_queque(int number_of_philosophers)
 {
-	t_fork_yield_queque yield_queque;
+	t_fork_yield_queque	yield_queque;
 
 	yield_queque.private_queque_index = 0;
 	yield_queque.queque_size = number_of_philosophers;
@@ -53,7 +53,8 @@ static void	init_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,
 {
 	int	i;
 
-	if (mutexs == NULL || mutex_initialized == NULL || mutex_locked_check == NULL)
+	if (mutexs == NULL || mutex_initialized == NULL
+		|| mutex_locked_check == NULL)
 		return ;
 	i = 0;
 	while (i < number_of_philosophers)
@@ -72,7 +73,8 @@ t_schedueler_data	get_schedueler_data(int number_of_philosophers,
 {
 	t_schedueler_data	schedueler_data;
 
-	schedueler_data.number_of_active_philosophers = calloc(1, sizeof(volatile _Atomic int));
+	schedueler_data.number_of_active_philosophers = calloc(1,
+			sizeof(volatile _Atomic int));
 	schedueler_data.mutexs = calloc((unsigned)number_of_philosophers,
 			sizeof(pthread_mutex_t));
 	schedueler_data.mutex_initialized = calloc((unsigned)number_of_philosophers,
@@ -86,12 +88,13 @@ t_schedueler_data	get_schedueler_data(int number_of_philosophers,
 	schedueler_data.yields = get_yield_queque(number_of_philosophers);
 	schedueler_data.times_of_death = get_time_list(number_of_philosophers);
 	schedueler_data.times_of_awaking = get_time_list(number_of_philosophers);
-	schedueler_data.times_of_finishing_meal = get_time_list(number_of_philosophers);
+	schedueler_data.times_of_finishing_meal
+		= get_time_list(number_of_philosophers);
 	schedueler_data.number_of_philosophers = number_of_philosophers;
 	schedueler_data.launch_aborted = false;
 	*schedueler_data.number_of_active_philosophers = number_of_philosophers;
 	init_mutexs(schedueler_data.mutexs, schedueler_data.mutex_initialized,
-			schedueler_data.mutex_locked_check, number_of_philosophers);
+		schedueler_data.mutex_locked_check, number_of_philosophers);
 	return (schedueler_data);
 }
 

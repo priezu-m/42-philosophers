@@ -6,18 +6,18 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 12:03:08                                            */
-/*   Updated:  2023/09/15 15:18:36                                            */
+/*   Updated:  2023/09/17 22:52:44                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-
 #ifndef EVENTS_H
 # define EVENTS_H
+
+;
+# pragma clang diagnostic push
+# pragma clang diagnostic warning "-Weverything"
+# pragma clang diagnostic ignored "-Wempty-translation-unit"
+# pragma clang diagnostic ignored "-Wunused-macros"
 
 typedef enum e_events
 {
@@ -33,6 +33,6 @@ typedef enum e_events
 	e_philosopher_died
 }t_events_e;
 
-#endif
+# pragma clang diagnostic pop
 
-#pragma clang diagnostic pop
+#endif

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 15:13:37                                            */
-/*   Updated:  2023/09/17 18:01:26                                            */
+/*   Updated:  2023/09/18 19:36:32                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ t_philosopher	*get_philosopher_list(volatile _Atomic bool *simulation_over,
 void			destroy_philosopher_list(t_philosopher *philosopher_list);
 bool			philosopher_list_valid(t_philosopher *philosopher_list);
 void			launch_and_join_philosophers(t_philosopher *philosopher_list);
-void			*philosopher_routine(void *philosopher);
+void			*philosopher_routine(void *arg);
+void			initial_block(t_schedueler_data schedueler_data,
+					int philosopher_number);
+void			get_forks(t_philosopher *self);
 
 # pragma clang diagnostic pop
 

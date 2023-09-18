@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:40:25                                            */
-/*   Updated:  2023/09/17 18:01:39                                            */
+/*   Updated:  2023/09/18 19:38:50                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 typedef enum e_fork_state
 {
 	e_default_fork_state = 0,
-	e_requested,
-	e_gotten,
-	e_requested_and_gotten
+	e_requested = -1,
+	e_gotten = 1,
+	e_requested_and_gotten = 2,
+	e_gotten_and_requested = 3
 }t_fork_state;
 
 typedef struct s_fork_yield_queque
@@ -73,6 +74,14 @@ bool				schedueler_data_valid(t_schedueler_data schedueler_data);
 void				launch_schedueler(t_schedueler_data *schedueler_data);
 void				join_schedueler(t_schedueler_data schedueler_data);
 void				*schedueler_routine(void *schedueler_data);
+void				give_initial_forks(
+						volatile _Atomic t_fork_state (*fork_sate)[2],
+						int number_of_philosophers);
+void				check_fork_yields(t_schedueler_data *schedueler_data);
+void				yield_left_fork(t_schedueler_data *schedueler_data,
+						int reciver);
+void				yield_right_fork(t_schedueler_data *schedueler_data,
+						int reciver);
 
 # pragma clang diagnostic pop
 

@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: launch_join_schedueler.c                                       */
+/*   Filename: loger_routine.c                                                */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 17:29:26                                            */
-/*   Updated:  2023/09/17 22:56:52                                            */
+/*   Created:  2023/09/17 20:23:00                                            */
+/*   Updated:  2023/09/17 20:35:38                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "schedueler.h"
-#include <pthread.h>
-#include <stdbool.h>
+#include "loger.h"
+#include <stdio.h>
 
 ;
 #pragma clang diagnostic push
@@ -20,16 +19,11 @@
 #pragma clang diagnostic ignored "-Wempty-translation-unit"
 #pragma clang diagnostic ignored "-Wunused-macros"
 
-void	launch_schedueler(t_schedueler_data *schedueler_data)
+void	*loger_routine(void *loger_data)
 {
-	if (pthread_create(&schedueler_data->thread_id, NULL, schedueler_routine,
-			schedueler_data) != 0)
-		schedueler_data->launch_aborted = true;
-}
-
-void	join_schedueler(t_schedueler_data schedueler_data)
-{
-	pthread_join(schedueler_data.thread_id, NULL);
+	printf("loger routine entered\n");
+	(void)loger_data;
+	return (NULL);
 }
 
 #pragma clang diagnostic pop

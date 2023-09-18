@@ -4,19 +4,20 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-EVENTS_H	/home/peru/42-philosophers/events.h	20;"	d
-LOGER_H	/home/peru/42-philosophers/loger.h	15;"	d
+EVENTS_H	/home/peru/42-philosophers/events.h	14;"	d
+LOGER_H	/home/peru/42-philosophers/loger.h	14;"	d
 NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED	/home/peru/42-philosophers/schedueler.h	26;"	d
 PARAMETERS_H	/home/peru/42-philosophers/parameters.h	14;"	d
 PHILOSOPHER_H	/home/peru/42-philosophers/philosopher.h	14;"	d
 SCHEDUELER_H	/home/peru/42-philosophers/schedueler.h	14;"	d
-_Atomic	/home/peru/42-philosophers/loger_data.c	/^t_loger_data	get_loger_data(volatile _Atomic(bool) *simulation_over,$/;"	f
+check_fork_yields	/home/peru/42-philosophers/schedueler.h	/^void				check_fork_yields(t_schedueler_data *schedueler_data);$/;"	p	signature:(t_schedueler_data *schedueler_data)
+check_fork_yields	/home/peru/42-philosophers/schedueler_routine.c	/^void	check_fork_yields(t_schedueler_data *schedueler_data)$/;"	f	signature:(t_schedueler_data *schedueler_data)
 destroy_loger_data	/home/peru/42-philosophers/loger.h	/^void			destroy_loger_data(t_loger_data loger_data);$/;"	p	signature:(t_loger_data loger_data)
 destroy_loger_data	/home/peru/42-philosophers/loger_data.c	/^void	destroy_loger_data(t_loger_data loger_data)$/;"	f	signature:(t_loger_data loger_data)
-destroy_mutexs	/home/peru/42-philosophers/destroy_schedueler_data.c	/^static void	destroy_mutexs (pthread_mutex_t *mutexs, bool *mutex_initialized,$/;"	f	file:	signature:(pthread_mutex_t *mutexs, bool *mutex_initialized, volatile _Atomic bool *mutex_locked_check, int number_of_philosophers)
+destroy_mutexs	/home/peru/42-philosophers/destroy_schedueler_data.c	/^static void	destroy_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,$/;"	f	file:	signature:(pthread_mutex_t *mutexs, bool *mutex_initialized, volatile _Atomic bool *mutex_locked_check, int number_of_philosophers)
 destroy_philosopher_list	/home/peru/42-philosophers/philosopher.h	/^void			destroy_philosopher_list(t_philosopher *philosopher_list);$/;"	p	signature:(t_philosopher *philosopher_list)
 destroy_philosopher_list	/home/peru/42-philosophers/philosopher_list.c	/^void	destroy_philosopher_list(t_philosopher *philosopher_list)$/;"	f	signature:(t_philosopher *philosopher_list)
-destroy_schedueler_data	/home/peru/42-philosophers/destroy_schedueler_data.c	/^void destroy_schedueler_data(t_schedueler_data schedueler_data)$/;"	f	signature:(t_schedueler_data schedueler_data)
+destroy_schedueler_data	/home/peru/42-philosophers/destroy_schedueler_data.c	/^void	destroy_schedueler_data(t_schedueler_data schedueler_data)$/;"	f	signature:(t_schedueler_data schedueler_data)
 destroy_schedueler_data	/home/peru/42-philosophers/schedueler.h	/^void				destroy_schedueler_data(t_schedueler_data schedueler_data);$/;"	p	signature:(t_schedueler_data schedueler_data)
 destroy_schedueler_data	/home/peru/42-philosophers/schedueler_data.c	/^void destroy_schedueler_data(t_schedueler_data schedueler_data)$/;"	f	signature:(t_schedueler_data schedueler_data)
 destroy_simulation_data	/home/peru/42-philosophers/main.c	/^static void	destroy_simulation_data(t_simulation_data simulation_data)$/;"	f	file:	signature:(t_simulation_data simulation_data)
@@ -31,18 +32,22 @@ e_default_event	/home/peru/42-philosophers/events.h	/^	e_default_event = 0,$/;"	
 e_default_fork_state	/home/peru/42-philosophers/schedueler.h	/^	e_default_fork_state = 0,$/;"	e	enum:e_fork_state
 e_events	/home/peru/42-philosophers/events.h	/^typedef enum e_events$/;"	g
 e_fork_state	/home/peru/42-philosophers/schedueler.h	/^typedef enum e_fork_state$/;"	g
-e_gotten	/home/peru/42-philosophers/schedueler.h	/^	e_gotten,$/;"	e	enum:e_fork_state
+e_gotten	/home/peru/42-philosophers/schedueler.h	/^	e_gotten = 1,$/;"	e	enum:e_fork_state
+e_gotten_and_requested	/home/peru/42-philosophers/schedueler.h	/^	e_gotten_and_requested = 3$/;"	e	enum:e_fork_state
 e_left_forks	/home/peru/42-philosophers/events.h	/^	e_left_forks,$/;"	e	enum:e_events
 e_philosopher_died	/home/peru/42-philosophers/events.h	/^	e_philosopher_died$/;"	e	enum:e_events
-e_requested	/home/peru/42-philosophers/schedueler.h	/^	e_requested,$/;"	e	enum:e_fork_state
-e_requested_and_gotten	/home/peru/42-philosophers/schedueler.h	/^	e_requested_and_gotten$/;"	e	enum:e_fork_state
+e_requested	/home/peru/42-philosophers/schedueler.h	/^	e_requested = -1,$/;"	e	enum:e_fork_state
+e_requested_and_gotten	/home/peru/42-philosophers/schedueler.h	/^	e_requested_and_gotten = 2,$/;"	e	enum:e_fork_state
 e_simulation_aborted	/home/peru/42-philosophers/events.h	/^	e_simulation_aborted,$/;"	e	enum:e_events
 e_simulation_began	/home/peru/42-philosophers/events.h	/^	e_simulation_began,$/;"	e	enum:e_events
 e_took_forks	/home/peru/42-philosophers/events.h	/^	e_took_forks,$/;"	e	enum:e_events
 event_data	/home/peru/42-philosophers/loger.h	/^	volatile t_event_data	event_data;$/;"	m	struct:s_log_request	access:public
 event_id	/home/peru/42-philosophers/loger.h	/^	t_events_e			event_id;$/;"	m	struct:s_event_data	access:public
 fork_sate	/home/peru/42-philosophers/schedueler.h	/^	volatile _Atomic	t_fork_state	(*fork_sate)[2];$/;"	m	struct:s_schedueler_data	access:public
+get_forks	/home/peru/42-philosophers/philosopher.h	/^void			get_forks(t_philosopher *self);$/;"	p	signature:(t_philosopher *self)
+get_forks	/home/peru/42-philosophers/philosopher_routine.c	/^void	get_forks(t_philosopher *self)$/;"	f	signature:(t_philosopher *self)
 get_loger_data	/home/peru/42-philosophers/loger.h	/^t_loger_data	get_loger_data(volatile _Atomic bool *simulation_over,$/;"	p	signature:(volatile _Atomic bool *simulation_over, int last_needed_meals_needed, int number_of_philosophers)
+get_loger_data	/home/peru/42-philosophers/loger_data.c	/^t_loger_data	get_loger_data(volatile _Atomic bool *simulation_over,$/;"	f	signature:(volatile _Atomic bool *simulation_over, int last_needed_meals_needed, int number_of_philosophers)
 get_loger_queque	/home/peru/42-philosophers/loger_data.c	/^static t_loger_queque	get_loger_queque(int number_of_philosophers)$/;"	f	file:	signature:(int number_of_philosophers)
 get_parameters	/home/peru/42-philosophers/parameters.c	/^t_parameters	get_parameters(int argc, char **argv)$/;"	f	signature:(int argc, char **argv)
 get_parameters	/home/peru/42-philosophers/parameters.h	/^t_parameters	get_parameters(int argc, char **argv);$/;"	p	signature:(int argc, char **argv)
@@ -53,9 +58,13 @@ get_schedueler_data	/home/peru/42-philosophers/schedueler.h	/^t_schedueler_data	
 get_schedueler_data	/home/peru/42-philosophers/schedueler_data.c	/^t_schedueler_data	get_schedueler_data(int number_of_philosophers,$/;"	f	signature:(int number_of_philosophers, volatile _Atomic bool *simulation_over)
 get_simulation_data	/home/peru/42-philosophers/main.c	/^static t_simulation_data	get_simulation_data(int argc, char **argv)$/;"	f	file:	signature:(int argc, char **argv)
 get_time_list	/home/peru/42-philosophers/get_schedueler_data.c	/^static t_time_list	get_time_list(int number_of_philosophers)$/;"	f	file:	signature:(int number_of_philosophers)
-get_yield_queque	/home/peru/42-philosophers/get_schedueler_data.c	/^static t_fork_yield_queque get_yield_queque(int number_of_philosophers)$/;"	f	file:	signature:(int number_of_philosophers)
+get_yield_queque	/home/peru/42-philosophers/get_schedueler_data.c	/^static t_fork_yield_queque	get_yield_queque(int number_of_philosophers)$/;"	f	file:	signature:(int number_of_philosophers)
 get_yield_queque	/home/peru/42-philosophers/schedueler_data.c	/^static t_fork_yield_queque get_yield_queque(int number_of_philosophers)$/;"	f	file:	signature:(int number_of_philosophers)
+give_initial_forks	/home/peru/42-philosophers/schedueler.h	/^void				give_initial_forks($/;"	p	signature:( volatile _Atomic t_fork_state (fork_sate)[2], int number_of_philosophers)
+give_initial_forks	/home/peru/42-philosophers/schedueler_routine.c	/^void	give_initial_forks(volatile _Atomic t_fork_state (*fork_sate)[2],$/;"	f	signature:(volatile _Atomic t_fork_state (fork_sate)[2], int number_of_philosophers)
 init_mutexs	/home/peru/42-philosophers/get_schedueler_data.c	/^static void	init_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,$/;"	f	file:	signature:(pthread_mutex_t *mutexs, bool *mutex_initialized, volatile _Atomic bool *mutex_locked_check, int number_of_philosophers)
+initial_block	/home/peru/42-philosophers/philosopher.h	/^void			initial_block(t_schedueler_data schedueler_data,$/;"	p	signature:(t_schedueler_data schedueler_data, int philosopher_number)
+initial_block	/home/peru/42-philosophers/philosopher_routine.c	/^void	initial_block(t_schedueler_data schedueler_data,$/;"	f	signature:(t_schedueler_data schedueler_data, int philosopher_number)
 issuer_id	/home/peru/42-philosophers/loger.h	/^	int					issuer_id;$/;"	m	struct:s_event_data	access:public
 join_loger	/home/peru/42-philosophers/launch_join_loger.c	/^void	join_loger(t_loger_data loger_data)$/;"	f	signature:(t_loger_data loger_data)
 join_loger	/home/peru/42-philosophers/loger.h	/^void			join_loger(t_loger_data loger_data);$/;"	p	signature:(t_loger_data loger_data)
@@ -86,6 +95,7 @@ loger_data_valid	/home/peru/42-philosophers/loger_data.c	/^bool	loger_data_valid
 loger_queque	/home/peru/42-philosophers/loger.h	/^	t_loger_queque			loger_queque;$/;"	m	struct:loger_data	access:public
 loger_queque	/home/peru/42-philosophers/philosopher.h	/^	t_loger_queque			loger_queque;$/;"	m	struct:s_philosopher	access:public
 loger_routine	/home/peru/42-philosophers/loger.h	/^void			*loger_routine(void *loger_data);$/;"	p	signature:(void *loger_data)
+loger_routine	/home/peru/42-philosophers/loger_routine.c	/^void	*loger_routine(void *loger_data)$/;"	f	signature:(void *loger_data)
 main	/home/peru/42-philosophers/main.c	/^int	main(int argc, char **argv)$/;"	f	signature:(int argc, char **argv)
 mutex_initialized	/home/peru/42-philosophers/schedueler.h	/^	bool								*mutex_initialized;$/;"	m	struct:s_schedueler_data	access:public
 mutex_locked_check	/home/peru/42-philosophers/schedueler.h	/^	volatile _Atomic bool				*mutex_locked_check;$/;"	m	struct:s_schedueler_data	access:public
@@ -101,7 +111,8 @@ philosopher_list	/home/peru/42-philosophers/main.c	/^	t_philosopher			*philosoph
 philosopher_list_valid	/home/peru/42-philosophers/philosopher.h	/^bool			philosopher_list_valid(t_philosopher *philosopher_list);$/;"	p	signature:(t_philosopher *philosopher_list)
 philosopher_list_valid	/home/peru/42-philosophers/philosopher_list.c	/^bool	philosopher_list_valid(t_philosopher *philosopher_list)$/;"	f	signature:(t_philosopher *philosopher_list)
 philosopher_number	/home/peru/42-philosophers/philosopher.h	/^	int						philosopher_number;$/;"	m	struct:s_philosopher	access:public
-philosopher_routine	/home/peru/42-philosophers/philosopher.h	/^void			*philosopher_routine(void *philosopher);$/;"	p	signature:(void *philosopher)
+philosopher_routine	/home/peru/42-philosophers/philosopher.h	/^void			*philosopher_routine(void *arg);$/;"	p	signature:(void *arg)
+philosopher_routine	/home/peru/42-philosophers/philosopher_routine.c	/^void	*philosopher_routine(void *arg)$/;"	f	signature:(void *arg)
 print_usage	/home/peru/42-philosophers/parameters.c	/^void	print_usage(void)$/;"	f	signature:(void)
 print_usage	/home/peru/42-philosophers/parameters.h	/^void			print_usage(void);$/;"	p	signature:(void)
 print_usage_part_one	/home/peru/42-philosophers/parameters.c	/^static void	print_usage_part_one(void)$/;"	f	file:	signature:(void)
@@ -174,8 +185,9 @@ s_time_list::times	/home/peru/42-philosophers/schedueler.h	/^	volatile _Atomic l
 schedueler_data	/home/peru/42-philosophers/main.c	/^	t_schedueler_data		schedueler_data;$/;"	m	struct:s_simulation_data	file:	access:public
 schedueler_data	/home/peru/42-philosophers/philosopher.h	/^	t_schedueler_data		schedueler_data;$/;"	m	struct:s_philosopher	access:public
 schedueler_data_valid	/home/peru/42-philosophers/schedueler.h	/^bool				schedueler_data_valid(t_schedueler_data schedueler_data);$/;"	p	signature:(t_schedueler_data schedueler_data)
-schedueler_data_valid	/home/peru/42-philosophers/schedueler_data_valid.c	/^bool schedueler_data_valid(t_schedueler_data schedueler_data)$/;"	f	signature:(t_schedueler_data schedueler_data)
+schedueler_data_valid	/home/peru/42-philosophers/schedueler_data_valid.c	/^bool	schedueler_data_valid(t_schedueler_data schedueler_data)$/;"	f	signature:(t_schedueler_data schedueler_data)
 schedueler_routine	/home/peru/42-philosophers/schedueler.h	/^void				*schedueler_routine(void *schedueler_data);$/;"	p	signature:(void *schedueler_data)
+schedueler_routine	/home/peru/42-philosophers/schedueler_routine.c	/^void	*schedueler_routine(void *arg)$/;"	f	signature:(void *arg)
 simulation_data_valid	/home/peru/42-philosophers/main.c	/^static bool	simulation_data_valid(t_simulation_data simulation_data)$/;"	f	file:	signature:(t_simulation_data simulation_data)
 simulation_over	/home/peru/42-philosophers/loger.h	/^	volatile _Atomic bool	*simulation_over;$/;"	m	struct:loger_data	access:public
 simulation_over	/home/peru/42-philosophers/philosopher.h	/^	volatile _Atomic bool	*simulation_over;$/;"	m	struct:s_philosopher	access:public
@@ -204,5 +216,9 @@ times_of_awaking	/home/peru/42-philosophers/schedueler.h	/^	t_time_list							ti
 times_of_death	/home/peru/42-philosophers/schedueler.h	/^	t_time_list							times_of_death;$/;"	m	struct:s_schedueler_data	access:public
 times_of_finishing_meal	/home/peru/42-philosophers/schedueler.h	/^	t_time_list							times_of_finishing_meal;$/;"	m	struct:s_schedueler_data	access:public
 trunc_atoi	/home/peru/42-philosophers/parameters.c	/^static int	trunc_atoi(char *str)$/;"	f	file:	signature:(char *str)
+yield_left_fork	/home/peru/42-philosophers/schedueler.h	/^void				yield_left_fork(t_schedueler_data *schedueler_data,$/;"	p	signature:(t_schedueler_data *schedueler_data, int reciver)
+yield_left_fork	/home/peru/42-philosophers/schedueler_routine.c	/^void	yield_left_fork(t_schedueler_data *schedueler_data, int reciver)$/;"	f	signature:(t_schedueler_data *schedueler_data, int reciver)
+yield_right_fork	/home/peru/42-philosophers/schedueler.h	/^void				yield_right_fork(t_schedueler_data *schedueler_data,$/;"	p	signature:(t_schedueler_data *schedueler_data, int reciver)
+yield_right_fork	/home/peru/42-philosophers/schedueler_routine.c	/^void	yield_right_fork(t_schedueler_data *schedueler_data, int reciver)$/;"	f	signature:(t_schedueler_data *schedueler_data, int reciver)
 yielder_ids	/home/peru/42-philosophers/schedueler.h	/^	volatile _Atomic int	*yielder_ids;$/;"	m	struct:s_fork_yield_queque	access:public
 yields	/home/peru/42-philosophers/schedueler.h	/^	t_fork_yield_queque					yields;$/;"	m	struct:s_schedueler_data	access:public

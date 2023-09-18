@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 16:24:59                                            */
-/*   Updated:  2023/09/17 13:48:07                                            */
+/*   Updated:  2023/09/17 22:46:27                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
-static void	destroy_mutexs (pthread_mutex_t *mutexs, bool *mutex_initialized,
+static void	destroy_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,
 		volatile _Atomic bool *mutex_locked_check, int number_of_philosophers)
 {
 	int	i;
 
-	if (mutexs == NULL || mutex_initialized == NULL || mutex_locked_check == NULL)
+	if (mutexs == NULL || mutex_initialized == NULL
+		|| mutex_locked_check == NULL)
+	{
 		return ;
+	}
 	i = 0;
 	while (i < number_of_philosophers)
 	{
@@ -44,7 +47,6 @@ static void	destroy_mutexs (pthread_mutex_t *mutexs, bool *mutex_initialized,
 
 static void	destroy_time_list(t_time_list time_list)
 {
-
 	free((void *)(intptr_t)time_list.list_index);
 	free((void *)(intptr_t)time_list.times);
 }
@@ -55,11 +57,12 @@ static void	destroy_yield_queque(t_fork_yield_queque yield_queque)
 	free((void *)(intptr_t)yield_queque.yielder_ids);
 }
 
-void destroy_schedueler_data(t_schedueler_data schedueler_data)
+void	destroy_schedueler_data(t_schedueler_data schedueler_data)
 {
 	destroy_mutexs(schedueler_data.mutexs, schedueler_data.mutex_initialized,
-			schedueler_data.mutex_locked_check, schedueler_data.number_of_philosophers);
-	free((void * )(intptr_t)schedueler_data.mutex_initialized); 
+		schedueler_data.mutex_locked_check,
+		schedueler_data.number_of_philosophers);
+	free((void *)(intptr_t)schedueler_data.mutex_initialized); 
 	free((void *)(intptr_t)schedueler_data.number_of_active_philosophers);
 	free((void *)(intptr_t)schedueler_data.mutexs);
 	free((void *)(intptr_t)schedueler_data.mutex_locked_check);
@@ -71,5 +74,3 @@ void destroy_schedueler_data(t_schedueler_data schedueler_data)
 }
 
 #pragma clang diagnostic pop
-
-

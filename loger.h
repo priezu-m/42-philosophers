@@ -6,11 +6,10 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:23:18                                            */
-/*   Updated:  2023/09/17 18:01:47                                            */
+/*   Updated:  2023/09/17 22:43:36                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-;
 #ifndef LOGER_H
 # define LOGER_H
 
@@ -18,6 +17,7 @@
 # include <stdbool.h>
 # include <pthread.h>
 
+;
 # pragma clang diagnostic push
 # pragma clang diagnostic warning "-Weverything"
 # pragma clang diagnostic ignored "-Wempty-translation-unit"
