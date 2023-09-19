@@ -6,11 +6,14 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 20:27:52                                            */
-/*   Updated:  2023/09/18 19:38:51                                            */
+/*   Updated:  2023/09/19 17:08:12                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "schedueler.h"
+#include "time.h"
+#include "mutex_sequential_action.h"
+#include <pthread.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -21,106 +24,79 @@
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
-//todo: give below functions external linkage
-
-void	yield_right_fork(t_schedueler_data *schedueler_data, int reciver)
+static void	schedueler_loop(t_schedueler_data *schedueler_data)
 {
-	volatile _Atomic t_fork_state	*forks;
-	t_fork_state					aux;
-
-	forks = &schedueler_data->fork_sate[reciver - 1][0];
-	aux = forks[0]++;
-	if (aux == e_requested)
+	while (*schedueler_data->simulation_over != true)
 	{
-		forks[0] = e_requested_and_gotten;
-		if (forks[1] == e_default_fork_state || forks[1] == e_requested)
-			return ;
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
-		//mutex_sequential_action(e_mutex_unlock,
-			//&self->schedueler_data.mutexs[reciver - 1]);
-		(*schedueler_data->number_of_active_philosophers)++;
-	}
-	else if (forks[1] == e_requested_and_gotten)
-	{
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
-		//mutex_sequential_action(e_mutex_unlock,
-			//&self->schedueler_data.mutexs[reciver - 1]);
-		(*schedueler_data->number_of_active_philosophers)++;
+		if (*schedueler_data->number_of_active_philosophers
+			>= NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED)
+		{
+			continue ;
+		}
+		check_fork_yields(schedueler_data);
+		check_time_list(&schedueler_data->times_of_finishing_meal,
+			schedueler_data->number_of_active_philosophers,
+			schedueler_data->mutexs);
+		check_time_list(&schedueler_data->times_of_awaking,
+			schedueler_data->number_of_active_philosophers,
+			schedueler_data->mutexs);
+		check_time_list(&schedueler_data->times_of_death,
+			schedueler_data->number_of_active_philosophers,
+			schedueler_data->mutexs);
 	}
 }
 
-void	yield_left_fork(t_schedueler_data *schedueler_data, int reciver)
-{
-	volatile _Atomic t_fork_state	*forks;
-	t_fork_state					aux;
-
-	forks = &schedueler_data->fork_sate[reciver - 1][0];
-	aux = forks[1]++;
-	if (aux == e_requested)
-	{
-		forks[1] = e_requested_and_gotten;
-		if (forks[0] == e_default_fork_state || forks[0] == e_requested)
-			return ;
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
-		//mutex_sequential_action(e_mutex_unlock,
-			//&self->schedueler_data.mutexs[reciver - 1]);
-		(*schedueler_data->number_of_active_philosophers)++;
-	}
-	else if (forks[0] == e_requested_and_gotten)
-	{
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
-		//mutex_sequential_action(e_mutex_unlock,
-			//&self->schedueler_data.mutexs[reciver - 1]);
-		(*schedueler_data->number_of_active_philosophers)++;
-	}
-}
-
-void	check_fork_yields(t_schedueler_data *schedueler_data)
-{
-	const int	i = schedueler_data->yields.private_queque_index;
-	int			id;
-
-	if (i == *schedueler_data->yields.queque_index)
-		return ;
-	if (schedueler_data->yields.yielder_ids[i] == 0)
-		return ;
-	id = schedueler_data->yields.yielder_ids[i];
-	if (id == schedueler_data->number_of_philosophers)
-		yield_right_fork(schedueler_data, 1);
-	else
-		yield_right_fork(schedueler_data, id + 1);
-	if (id == 0)
-	{
-		yield_left_fork(schedueler_data,
-				schedueler_data->number_of_philosophers);
-	}
-	else
-		yield_left_fork(schedueler_data, id - 1);
-	schedueler_data->yields.yielder_ids[i] = 0;
-	schedueler_data->yields.private_queque_index++;
-}
-
-void	give_initial_forks(volatile _Atomic t_fork_state (*fork_sate)[2],
-		int number_of_philosophers)
+static void	unlock_uneven(t_schedueler_data *schedueler_data)
 {
 	int	i;
 
 	i = 0;
-	while (i < number_of_philosophers)
+	while (i < schedueler_data->number_of_philosophers
+		&& *schedueler_data->simulation_over != true)
 	{
-		fork_sate[i][0] = e_gotten;
-		fork_sate[i][1] = e_gotten;
+		if (*schedueler_data->number_of_active_philosophers
+			>= NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED)
+		{
+			continue ;
+		}
+		(*schedueler_data->number_of_active_philosophers)++;
+		pthread_mutex_unlock(&schedueler_data->mutexs[i]);
 		i += 2;
 	}
-	if ((number_of_philosophers % 2) == 1)
+}
+
+static void	unlock_even(t_schedueler_data *schedueler_data)
+{
+	int	i;
+
+	i = 1;
+	while (i < schedueler_data->number_of_philosophers
+		&& *schedueler_data->simulation_over != true)
 	{
-		i -= 2;
-		fork_sate[i][0] = e_default_fork_state;
-		fork_sate[i][1] = e_default_fork_state;
-		i--;
-		if (i == -1)
-			i = 0;
-		fork_sate[i][1] = e_gotten;
+		if (*schedueler_data->number_of_active_philosophers
+			>= NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED)
+		{
+			continue ;
+		}
+		(*schedueler_data->number_of_active_philosophers)++;
+		pthread_mutex_unlock(&schedueler_data->mutexs[i]);
+		i += 2;
+	}
+}
+
+static void	unlock_all(t_schedueler_data *schedueler_data)
+{
+	int	i;
+
+	i = 0;
+	while (i < schedueler_data->number_of_philosophers)
+	{
+		if (schedueler_data->mutex_locked_check[i] == true)
+		{
+			mutex_sequential_action(e_mutex_unlock,
+				&schedueler_data->mutexs[i]);
+		}
+		i++;
 	}
 }
 
@@ -128,20 +104,17 @@ void	*schedueler_routine(void *arg)
 {
 	t_schedueler_data	*schedueler_data;
 
-	schedueler_data	= arg;
+	schedueler_data = arg;
 	give_initial_forks(schedueler_data->fork_sate,
 		schedueler_data->number_of_philosophers);
 	while ((*schedueler_data->number_of_active_philosophers != 0)
-			&& (*schedueler_data->simulation_over != true))
+		&& (*schedueler_data->simulation_over != true))
 		;
-	while (*schedueler_data->simulation_over != true)
-	{
-		check_fork_yields(schedueler_data);
-		check_eating();
-		check_sleeping();
-		check_deaths();
-	}
-	unlock_all();
+	get_set_current_time(e_set_current_time_as_origin);
+	unlock_uneven(schedueler_data);
+	unlock_even(schedueler_data);
+	schedueler_loop(schedueler_data);
+	unlock_all(schedueler_data);
 	return (NULL);
 }
 

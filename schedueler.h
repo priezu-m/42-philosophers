@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:40:25                                            */
-/*   Updated:  2023/09/18 19:38:50                                            */
+/*   Updated:  2023/09/19 17:12:20                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ typedef struct s_fork_yield_queque
 
 typedef struct s_time_list
 {
-	volatile _Atomic long int	*times;
-	int							list_size;
+	volatile unsigned long int	*times;
+	volatile _Atomic int		*philosophers_id;
+	unsigned int				list_size;
 	volatile _Atomic int		*list_index;
 	int							private_list_index;
 }t_time_list;
@@ -82,6 +83,10 @@ void				yield_left_fork(t_schedueler_data *schedueler_data,
 						int reciver);
 void				yield_right_fork(t_schedueler_data *schedueler_data,
 						int reciver);
+void				check_time_list(
+						t_time_list *time_list,
+						int volatile _Atomic *number_of_active_philosophers,
+						pthread_mutex_t *mutexs);
 
 # pragma clang diagnostic pop
 

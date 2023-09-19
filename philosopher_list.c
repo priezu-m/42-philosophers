@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 16:47:27                                            */
-/*   Updated:  2023/09/17 16:51:58                                            */
+/*   Updated:  2023/09/19 17:02:21                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #pragma clang diagnostic warning "-Weverything"
 #pragma clang diagnostic ignored "-Wempty-translation-unit"
 #pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 t_philosopher	*get_philosopher_list(volatile _Atomic bool *simulation_over,
 					t_parameters parameters, t_schedueler_data schedueler_data,
@@ -40,8 +41,14 @@ t_philosopher	*get_philosopher_list(volatile _Atomic bool *simulation_over,
 		philosopher_list[i].parameters = parameters;
 		philosopher_list[i].schedueler_data = schedueler_data;
 		philosopher_list[i].simulation_over = simulation_over;
+		philosopher_list[i].time_of_death
+			= (unsigned)parameters.time_to_starve * 1000ul;
+		schedueler_data.times_of_death.philosophers_id[i] = i + 1;
+		schedueler_data.times_of_death.times[i]
+			= (unsigned long)parameters.time_to_starve * 1000ul;
 		i++;
 	}
+	*schedueler_data.times_of_death.list_index = i;
 	return (philosopher_list);
 }
 

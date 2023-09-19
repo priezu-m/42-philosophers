@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 15:13:37                                            */
-/*   Updated:  2023/09/18 19:36:32                                            */
+/*   Updated:  2023/09/19 17:17:00                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philosopher
 	t_parameters			parameters;
 	t_schedueler_data		schedueler_data;
 	t_loger_queque			loger_queque;
+	unsigned long int		time_of_death;
 	pthread_t				thread_id;
 	int						philosopher_number;
 	bool					launch_aborted;
@@ -48,6 +49,14 @@ void			*philosopher_routine(void *arg);
 void			initial_block(t_schedueler_data schedueler_data,
 					int philosopher_number);
 void			get_forks(t_philosopher *self);
+void			block_self(t_philosopher *self);
+bool			simulation_over(t_philosopher *self);
+void			yield_forks_internal(t_fork_yield_queque yield_queque,
+					int philo_number);
+void			yield_forks(t_philosopher *self);
+void			eat(t_philosopher *self);
+void			sleep_self(t_philosopher *self);
+void			think(t_philosopher *self);
 
 # pragma clang diagnostic pop
 

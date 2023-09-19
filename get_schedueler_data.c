@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 14:51:38                                            */
-/*   Updated:  2023/09/17 22:49:26                                            */
+/*   Updated:  2023/09/19 13:49:02                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ static t_time_list	get_time_list(int number_of_philosophers)
 	t_time_list	time_list;
 
 	time_list.private_list_index = 0;
-	time_list.list_size = number_of_philosophers;
+	time_list.list_size = ((unsigned)number_of_philosophers) * 2;
 	time_list.list_index = calloc(1, sizeof(volatile _Atomic int));
-	time_list.times = calloc((unsigned)number_of_philosophers,
-			sizeof(volatile _Atomic long int));
+	time_list.times = calloc(((unsigned)number_of_philosophers) * 2,
+			sizeof(volatile unsigned long int));
+	time_list.philosophers_id = calloc(((unsigned)number_of_philosophers) * 2,
+			sizeof(volatile _Atomic int));
 	return (time_list);
 }
 

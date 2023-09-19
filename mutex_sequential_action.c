@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: philosopher_routine.c                                          */
+/*   Filename: mutex_sequential_action.c                                      */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 20:26:11                                            */
-/*   Updated:  2023/09/19 17:19:07                                            */
+/*   Created:  2023/09/19 16:56:32                                            */
+/*   Updated:  2023/09/19 16:59:25                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosopher.h"
-#include "schedueler.h"
 #include "mutex_sequential_action.h"
-#include "time.h"
 #include <pthread.h>
-#include <stdbool.h>
-#include <stdio.h>
 
 ;
 #pragma clang diagnostic push
@@ -25,31 +20,24 @@
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
-void	initial_block(t_schedueler_data schedueler_data,
-		int philosopher_number)
+void	mutex_sequential_action(t_mutex_action action, pthread_mutex_t *mutex)
 {
-	if (*schedueler_data.simulation_over == true)
-		return ;
-	(*schedueler_data.number_of_active_philosophers)--;
-	pthread_mutex_lock(&schedueler_data.mutexs[philosopher_number - 1]);
-	schedueler_data.mutex_locked_check[philosopher_number - 1] = true;
-}
+	static volatile _Atomic int	local_mutex;
+	int							aux;
 
-void	*philosopher_routine(void *arg)
-{
-	t_philosopher	*self;
-
-	self = arg;
-	initial_block(self->schedueler_data, self->philosopher_number);
-	while (*self->schedueler_data.simulation_over != true)
+	aux = local_mutex++;
+	while (aux != 0)
 	{
-		think(self);
-		get_forks(self);
-		eat(self);
-		yield_forks(self);
-		sleep_self(self);
+		mutex--;
+		aux = local_mutex++;
 	}
-	return (NULL);
+	if (action == e_mutex_lock)
+	{
+		pthread_mutex_lock(mutex);
+		return ;
+	}
+	pthread_mutex_unlock(mutex);
+	mutex--;
 }
 
 #pragma clang diagnostic pop
