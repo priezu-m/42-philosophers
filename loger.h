@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:23:18                                            */
-/*   Updated:  2023/09/17 22:43:36                                            */
+/*   Updated:  2023/09/20 13:14:22                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,19 @@
 # pragma clang diagnostic ignored "-Wunused-macros"
 # pragma clang diagnostic ignored "-Wc11-extensions"
 
+# define BUFFER_SIZE 10000
+
+typedef enum e_buffer_action
+{
+	e_flush_buffer,
+	e_push_to_buffer
+}t_buffer_action;
+
 typedef struct s_event_data
 {
-	t_events_e			event_id;
+	t_event				event_id;
 	int					issuer_id;
-	long int			time_of_issuing;
+	unsigned long int	time_of_issuing;
 }t_event_data;
 
 typedef struct s_log_request
@@ -60,7 +68,12 @@ void			destroy_loger_data(t_loger_data loger_data);
 bool			loger_data_valid(t_loger_data loger_data);
 void			launch_loger(t_loger_data *loger_data);
 void			join_loger(t_loger_data loger_data);
-void			*loger_routine(void *loger_data);
+void			*loger_routine(void *arg);
+void			print_event_sequential(t_loger_queque loger_queque,
+					t_event event,
+					int issuer_id);
+void			log_buffer(t_buffer_action action, char *msg, int msg_size);
+void			push_data_to_buffer(t_event_data data);
 
 # pragma clang diagnostic pop
 

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 20:26:11                                            */
-/*   Updated:  2023/09/19 17:19:07                                            */
+/*   Updated:  2023/09/21 00:14:46                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	*philosopher_routine(void *arg)
 	{
 		think(self);
 		get_forks(self);
+		if (simulation_over(self) == false)
+		{
+			print_event_sequential(self->loger_queque, e_took_forks,
+				self->philosopher_number);
+		}
 		eat(self);
 		yield_forks(self);
 		sleep_self(self);

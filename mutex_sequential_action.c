@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 16:56:32                                            */
-/*   Updated:  2023/09/19 16:59:25                                            */
+/*   Updated:  2023/09/20 21:32:04                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,17 @@
 
 void	mutex_sequential_action(t_mutex_action action, pthread_mutex_t *mutex)
 {
-	static volatile _Atomic int	local_mutex;
-	int							aux;
+	static volatile _Atomic int	cahce_coherence;
 
-	aux = local_mutex++;
-	while (aux != 0)
-	{
-		mutex--;
-		aux = local_mutex++;
-	}
+	cahce_coherence++;
 	if (action == e_mutex_lock)
 	{
 		pthread_mutex_lock(mutex);
+		cahce_coherence++;
 		return ;
 	}
 	pthread_mutex_unlock(mutex);
-	mutex--;
+	cahce_coherence++;
 }
 
 #pragma clang diagnostic pop

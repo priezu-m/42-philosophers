@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 15:13:37                                            */
-/*   Updated:  2023/09/19 17:17:00                                            */
+/*   Updated:  2023/09/22 12:54:56                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_philosopher
 	unsigned long int		time_of_death;
 	pthread_t				thread_id;
 	int						philosopher_number;
+	int						time_of_death_position;
 	bool					launch_aborted;
 }t_philosopher;
 

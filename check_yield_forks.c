@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 13:29:28                                            */
-/*   Updated:  2023/09/19 17:01:55                                            */
+/*   Updated:  2023/09/21 01:17:09                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	check_fork_yields(t_schedueler_data *schedueler_data)
 		yield_left_fork(schedueler_data, id - 1);
 	schedueler_data->yields.yielder_ids[i] = 0;
 	schedueler_data->yields.private_queque_index++;
+	schedueler_data->yields.private_queque_index
+		%= schedueler_data->yields.queque_size;
 }
 
 #pragma clang diagnostic pop

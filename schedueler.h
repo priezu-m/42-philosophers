@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:40:25                                            */
-/*   Updated:  2023/09/19 17:12:20                                            */
+/*   Updated:  2023/09/22 13:48:06                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # pragma clang diagnostic ignored "-Wunused-macros"
 # pragma clang diagnostic ignored "-Wc11-extensions"
 
-# define NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED 4
+# define NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED 14
 
 typedef enum e_fork_state
 {
@@ -44,7 +44,7 @@ typedef struct s_fork_yield_queque
 
 typedef struct s_time_list
 {
-	volatile unsigned long int	*times;
+	volatile _Atomic unsigned long int	*times;
 	volatile _Atomic int		*philosophers_id;
 	unsigned int				list_size;
 	volatile _Atomic int		*list_index;

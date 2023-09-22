@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 14:51:08                                            */
-/*   Updated:  2023/09/19 17:06:59                                            */
+/*   Updated:  2023/09/21 00:18:00                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # pragma clang diagnostic warning "-Weverything"
 # pragma clang diagnostic ignored "-Wempty-translation-unit"
 # pragma clang diagnostic ignored "-Wunused-macros"
+
+extern unsigned long int	ttrunc;
 
 typedef enum e_get_or_set_current_time
 {

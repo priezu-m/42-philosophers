@@ -1,15 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: philosopher_routine_fufnctions2.c                              */
+/*   Filename: philosopher_routine_functions2.c                               */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 17:18:25                                            */
-/*   Updated:  2023/09/19 17:18:59                                            */
+/*   Updated:  2023/09/21 00:13:01                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "events.h"
+#include "loger.h"
 #include "philosopher.h"
 #include "time.h"
 #include "mutex_sequential_action.h"
@@ -35,9 +37,10 @@ bool	simulation_over(t_philosopher *self)
 {
 	if (*self->schedueler_data.simulation_over == true)
 		return (true);
-	if (self->time_of_death >= get_set_current_time(e_get_current_time))
+	if (self->time_of_death <= get_set_current_time(e_get_current_time))
 	{
-		//print died
+		print_event_sequential(self->loger_queque, e_philosopher_died,
+			self->philosopher_number);
 		return (true);
 	}
 	return (false);
@@ -85,6 +88,8 @@ void	yield_forks(t_philosopher *self)
 {
 	if (simulation_over(self) == true)
 		return ;
+	print_event_sequential(self->loger_queque, e_left_forks,
+		self->philosopher_number);
 	yield_forks_internal(self->schedueler_data.yields,
 		self->philosopher_number);
 }

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 14:24:48                                            */
-/*   Updated:  2023/09/17 14:24:41                                            */
+/*   Updated:  2023/09/20 21:21:47                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static void	print_usage_part_one(void)
 		"think until they can eat again. Philosophers are unaware of the\n"
 		"state (eating, sleeping, thinking) of the other philosophers. If\n"
 		"TIME_TO_STARVE milliseconds pass since a philosopher last started\n"
-		"eating (or since the simulation began), the philosopher dies, and the\n"
+		"eating (or since the simulation began), the philosopher dies, and\n"
 		);
 }
 
 static void	print_usage_part_two(void)
 {
 	printf(
-		"simulation ends. If all philosophers have eaten\n"
+		"the simulation ends. If all philosophers have eaten\n"
 		"NUMBER_OF_MEALS_EACH_PHILOSOPHER_MUST_EAT meals, the simulation\n"
 		"ends. If this argument is not specified, the simulation will run\n"
 		"until a philosopher dies. Each philosopher is simulated whit a\n"

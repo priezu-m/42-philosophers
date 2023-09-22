@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 12:03:08                                            */
-/*   Updated:  2023/09/17 22:52:44                                            */
+/*   Updated:  2023/09/19 17:30:45                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # pragma clang diagnostic ignored "-Wempty-translation-unit"
 # pragma clang diagnostic ignored "-Wunused-macros"
 
-typedef enum e_events
+typedef enum e_event
 {
 	e_default_event = 0,
 	e_took_forks,
@@ -31,7 +31,7 @@ typedef enum e_events
 	e_simulation_began,
 	e_simulation_aborted,
 	e_philosopher_died
-}t_events_e;
+}t_event;
 
 # pragma clang diagnostic pop
 

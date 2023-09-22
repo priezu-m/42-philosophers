@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 16:24:59                                            */
-/*   Updated:  2023/09/17 22:46:27                                            */
+/*   Updated:  2023/09/20 21:20:42                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	destroy_schedueler_data(t_schedueler_data schedueler_data)
 	destroy_mutexs(schedueler_data.mutexs, schedueler_data.mutex_initialized,
 		schedueler_data.mutex_locked_check,
 		schedueler_data.number_of_philosophers);
-	free((void *)(intptr_t)schedueler_data.mutex_initialized); 
+	free((void *)(intptr_t)schedueler_data.mutex_initialized);
 	free((void *)(intptr_t)schedueler_data.number_of_active_philosophers);
 	free((void *)(intptr_t)schedueler_data.mutexs);
 	free((void *)(intptr_t)schedueler_data.mutex_locked_check);
