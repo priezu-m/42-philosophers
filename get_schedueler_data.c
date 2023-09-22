@@ -12,7 +12,6 @@
 
 #include "schedueler.h"
 #include "stdlib.h"
-#include <bits/types.h>
 #include <pthread.h>
 #include <stdbool.h>
 #include <stdint.h>

@@ -23,7 +23,7 @@
 # pragma clang diagnostic ignored "-Wunused-macros"
 # pragma clang diagnostic ignored "-Wc11-extensions"
 
-# define NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED 14
+# define NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED 4
 
 typedef enum e_fork_state
 {

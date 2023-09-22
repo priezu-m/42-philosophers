@@ -49,6 +49,7 @@ static void	destroy_time_list(t_time_list time_list)
 {
 	free((void *)(intptr_t)time_list.list_index);
 	free((void *)(intptr_t)time_list.times);
+	free((void *)(intptr_t)time_list.philosophers_id);
 }
 
 static void	destroy_yield_queque(t_fork_yield_queque yield_queque)
