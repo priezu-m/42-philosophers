@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loger_routine.c                                    :+:      :+:    :+:   */
+/*   Filename: loger_routine.c                                                */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:18:37 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:18:49 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/24 19:35:15                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,6 @@
 #include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-void	print_event_sequential(t_loger_queque loger_queque, t_event event,
-		int issuer_id)
-{
-	static _Atomic int	local_mutex;
-	int					aux;
-	unsigned long int	current_time;
-
-	aux = local_mutex++;
-	while (aux != 0)
-	{
-		local_mutex--;
-		aux = local_mutex++;
-	}
-	aux = (*loger_queque.queque_index)++;
-	aux %= loger_queque.queque_size;
-	*loger_queque.queque_index %= loger_queque.queque_size;
-	while (loger_queque.request_queque[aux].requests_comleted == false)
-		;
-	loger_queque.request_queque[aux].event_data.event_id = event;
-	loger_queque.request_queque[aux].event_data.issuer_id = issuer_id;
-	current_time = get_set_current_time(e_get_current_time);
-	loger_queque.request_queque[aux].event_data.time_of_issuing
-		= current_time / 1000;
-	if (current_time == ULONG_MAX)
-		loger_queque.request_queque[aux].event_data.event_id
-			= e_simulation_aborted;
-	loger_queque.request_queque[aux].requests_comleted = false;
-	local_mutex--;
-}
 
 static void	check_special_events(t_loger_data *loger_data)
 {
@@ -58,15 +28,6 @@ static void	check_special_events(t_loger_data *loger_data)
 	{
 		*loger_data->simulation_over = true;
 		return ;
-	}
-	if (event == e_began_to_eat_last_needed_meal)
-	{
-		loger_data->last_needed_meals_needed--;
-		if (loger_data->last_needed_meals_needed == 0)
-		{
-			*loger_data->simulation_over = true;
-			return ;
-		}
 	}
 }
 
@@ -89,6 +50,31 @@ static void	set_all_to_completed(t_loger_queque *loger_queque)
 	}
 }
 
+static bool	loger_subroutine(t_loger_data *loger_data)
+{
+	const int	i = loger_data->loger_queque.private_queque_index;
+
+	if (loger_data->loger_queque.request_queque[i].event_data.event_id
+		== e_finished_last_needed_meal)
+	{
+		loger_data->last_needed_meals_needed--;
+		if (loger_data->last_needed_meals_needed == 0)
+		{
+			*loger_data->simulation_over = true;
+			return (true);
+		}
+	}
+	else
+	{
+		push_data_to_buffer(
+			loger_data->loger_queque.request_queque[i].event_data);
+		check_special_events(loger_data);
+	}
+	loger_data->loger_queque.request_queque[i].requests_comleted = true;
+	increment_private_index(loger_data);
+	return (false);
+}
+
 void	*loger_routine(void *arg)
 {
 	t_loger_data	*loger_data;
@@ -100,15 +86,12 @@ void	*loger_routine(void *arg)
 		i = loger_data->loger_queque.private_queque_index;
 		if ((loger_data->loger_queque.request_queque[i].requests_comleted)
 			== true)
-		{
 			log_buffer(e_flush_buffer, NULL, 0);
-			continue ;
+		else
+		{
+			if (loger_subroutine(loger_data) == true)
+				break ;
 		}
-		push_data_to_buffer(
-			loger_data->loger_queque.request_queque[i].event_data);
-		check_special_events(loger_data);
-		loger_data->loger_queque.request_queque[i].requests_comleted = true;
-		increment_private_index(loger_data);
 	}
 	log_buffer(e_flush_buffer, NULL, 0);
 	set_all_to_completed(&loger_data->loger_queque);

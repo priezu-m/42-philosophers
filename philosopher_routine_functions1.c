@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher_routine_functions1.c                   :+:      :+:    :+:   */
+/*   Filename: philosopher_routine_functions1.c                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:21:40 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:28:35 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/24 19:22:46                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,8 @@ static void	update_time_of_death(t_philosopher *self,
 
 static void	print_began_to_eat(t_philosopher *self)
 {
-	if (self->parameters.number_of_meals_needed == -1)
-	{
-		print_event_sequential(self->loger_queque, e_began_to_eat,
-			self->philosopher_number);
-		return ;
-	}
-	self->parameters.number_of_meals_needed--;
-	if (self->parameters.number_of_meals_needed == 0)
-	{
-		print_event_sequential(self->loger_queque,
-			e_began_to_eat_last_needed_meal, self->philosopher_number);
-		return ;
-	}
+	if (self->parameters.number_of_meals_needed != -1)
+		self->parameters.number_of_meals_needed--;
 	print_event_sequential(self->loger_queque, e_began_to_eat,
 		self->philosopher_number);
 }

@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loger_buffer.c                                     :+:      :+:    :+:   */
+/*   Filename: loger_buffer.c                                                 */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:21:57 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:22:00 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/24 19:20:43                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "events.h"
 #include "loger.h"
 #include <unistd.h>
 
@@ -58,7 +59,7 @@ void	push_data_to_buffer(t_event_data data)
 	[e_took_forks] = "took his forks\n",
 	[e_left_forks] = "lef his forks\n",
 	[e_began_to_eat] = "began to eat\n",
-	[e_began_to_eat_last_needed_meal] = "began to eat\n",
+	[e_finished_last_needed_meal] = "you should not see this message\n",
 	[e_began_to_sleep] = "began to sleep\n",
 	[e_began_to_think] = "began to think\n",
 	[e_simulation_aborted]

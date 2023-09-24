@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.h                                           :+:      :+:    :+:   */
+/*   Filename: events.h                                                       */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/24 19:11:25                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef enum e_event
 	e_took_forks,
 	e_left_forks,
 	e_began_to_eat,
-	e_began_to_eat_last_needed_meal,
+	e_finished_last_needed_meal,
 	e_began_to_sleep,
 	e_began_to_think,
 	e_simulation_began,

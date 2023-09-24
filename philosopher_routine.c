@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher_routine.c                              :+:      :+:    :+:   */
+/*   Filename: philosopher_routine.c                                          */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/24 19:35:36                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	*philosopher_routine(void *arg)
 				self->philosopher_number);
 		}
 		eat(self);
+		if (self->parameters.number_of_meals_needed == 0)
+		{
+			print_event_sequential(self->loger_queque,
+				e_finished_last_needed_meal, self->philosopher_number);
+		}
 		yield_forks(self);
 		sleep_self(self);
 	}
