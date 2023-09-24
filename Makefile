@@ -6,7 +6,7 @@
 #    By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/24 18:11:35 by priezu-m          #+#    #+#              #
-#    Updated:  2023/09/24 18:49:19                                             #
+#    Updated:  2023/09/24 23:50:49                                             #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = check_time_list.c give_initial_forks.c loger_data.c \
 	  schedueler_routine.c get_schedueler_data.c \
 	  philosopher_routine_functions1.c \
 	  get_set_current_time.c loger_buffer.c parameters.c \
-	  philosopher_routine_functions2.c
+	  philosopher_routine_functions2.c print_event_sequential.c
 
 $(NAME): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
