@@ -6,7 +6,7 @@
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:21:40 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:21:44 by priezu-m         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:28:35 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	eat(t_philosopher *self)
 	{
 		print_event_sequential(self->loger_queque, e_philosopher_died,
 			self->philosopher_number);
-		block_self(self);
 	}
 	print_began_to_eat(self);
 	block_self(self);

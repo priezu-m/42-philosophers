@@ -6,7 +6,7 @@
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:33:55 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static void	unlock_all(t_schedueler_data *schedueler_data)
 	i = 0;
 	while (i < schedueler_data->number_of_philosophers)
 	{
-		pthread_mutex_unlock(&schedueler_data->mutexs[i]);
+		if (schedueler_data->mutex_locked_check[i] == true)
+			pthread_mutex_unlock(&schedueler_data->mutexs[i]);
+		else
+			schedueler_data->mutex_locked_check[i] = true;
 		i++;
 	}
 }
