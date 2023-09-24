@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 14:51:38                                            */
-/*   Updated:  2023/09/19 13:49:02                                            */
+/*   Updated:  2023/09/24 17:43:28                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ static void	init_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,
 	{
 		if (pthread_mutex_init(&mutexs[i], NULL) != 0)
 			return ;
-		pthread_mutex_lock(&mutexs[i]);
-		mutex_locked_check[i] = true;
 		mutex_initialized[i] = true;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 17:18:25                                            */
-/*   Updated:  2023/09/21 00:13:01                                            */
+/*   Updated:  2023/09/23 21:21:53                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "loger.h"
 #include "philosopher.h"
 #include "time.h"
-#include "mutex_sequential_action.h"
+#include "mutex_action_no_ownership_transfer.h"
 
 ;
 #pragma clang diagnostic push
@@ -28,9 +28,9 @@ void	block_self(t_philosopher *self)
 	const int	philo_number = self->philosopher_number;
 
 	(*self->schedueler_data.number_of_active_philosophers)--;
-	mutex_sequential_action(e_mutex_lock,
-		&self->schedueler_data.mutexs[philo_number - 1]);
-	self->schedueler_data.mutex_locked_check[philo_number - 1] = true;
+	mutex_action_no_ownership_transfer(e_mutex_lock,
+		&self->schedueler_data.mutexs[philo_number - 1],
+		&self->schedueler_data.mutex_locked_check[philo_number - 1]);
 }
 
 bool	simulation_over(t_philosopher *self)

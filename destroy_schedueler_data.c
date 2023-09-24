@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/16 16:24:59                                            */
-/*   Updated:  2023/09/20 21:20:42                                            */
+/*   Updated:  2023/09/24 17:42:20                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static void	destroy_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,
 	{
 		if (mutex_initialized[i] == false)
 			return ;
-		if (mutex_locked_check[i] == true)
-			pthread_mutex_unlock(&mutexs[i]);
 		pthread_mutex_destroy(&mutexs[i]);
 		i++;
 	}

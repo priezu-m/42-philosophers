@@ -6,13 +6,13 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 20:26:11                                            */
-/*   Updated:  2023/09/21 00:14:46                                            */
+/*   Updated:  2023/09/23 23:32:50                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mutex_action_no_ownership_transfer.h"
 #include "philosopher.h"
 #include "schedueler.h"
-#include "mutex_sequential_action.h"
 #include "time.h"
 #include <pthread.h>
 #include <stdbool.h>
@@ -25,14 +25,23 @@
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
+void	think(t_philosopher *self)
+{
+	if (simulation_over(self) == true)
+		return ;
+	print_event_sequential(self->loger_queque, e_began_to_think,
+		self->philosopher_number);
+}
+
 void	initial_block(t_schedueler_data schedueler_data,
 		int philosopher_number)
 {
-	if (*schedueler_data.simulation_over == true)
-		return ;
+	while (schedueler_data.mutex_locked_check[philosopher_number - 1] == false)
+		;
 	(*schedueler_data.number_of_active_philosophers)--;
-	pthread_mutex_lock(&schedueler_data.mutexs[philosopher_number - 1]);
-	schedueler_data.mutex_locked_check[philosopher_number - 1] = true;
+	mutex_action_no_ownership_transfer(e_mutex_lock,
+		&schedueler_data.mutexs[philosopher_number - 1],
+		&schedueler_data.mutex_locked_check[philosopher_number - 1]);
 }
 
 void	*philosopher_routine(void *arg)

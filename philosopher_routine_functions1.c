@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 17:15:47                                            */
-/*   Updated:  2023/09/22 13:29:18                                            */
+/*   Updated:  2023/09/24 00:09:08                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "loger.h"
 #include "philosopher.h"
 #include "time.h"
-#include "mutex_sequential_action.h"
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,14 +24,6 @@
 #pragma clang diagnostic ignored "-Wempty-translation-unit"
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
-
-void	think(t_philosopher *self)
-{
-	if (simulation_over(self) == true)
-		return ;
-	print_event_sequential(self->loger_queque, e_began_to_think,
-		self->philosopher_number);
-}
 
 static unsigned long int	get_new_time_trunc(unsigned long int current_time,
 		int time_to_add)
@@ -66,6 +57,25 @@ static void	update_time_of_death(t_philosopher *self,
 	self->time_of_death_position = aux + 1;
 }
 
+static void	print_began_to_eat(t_philosopher *self)
+{
+	if (self->parameters.number_of_meals_needed == -1)
+	{
+		print_event_sequential(self->loger_queque, e_began_to_eat,
+			self->philosopher_number);
+		return ;
+	}
+	self->parameters.number_of_meals_needed--;
+	if (self->parameters.number_of_meals_needed == 0)
+	{
+		print_event_sequential(self->loger_queque,
+			e_began_to_eat_last_needed_meal, self->philosopher_number);
+		return ;
+	}
+	print_event_sequential(self->loger_queque, e_began_to_eat,
+		self->philosopher_number);
+}
+
 void	eat(t_philosopher *self)
 {
 	int						aux;
@@ -89,8 +99,7 @@ void	eat(t_philosopher *self)
 		print_event_sequential(self->loger_queque, e_philosopher_died,
 			self->philosopher_number);
 	}
-	print_event_sequential(self->loger_queque, e_began_to_eat,
-		self->philosopher_number);
+	print_began_to_eat(self);
 	block_self(self);
 }
 

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/20 13:11:15                                            */
-/*   Updated:  2023/09/20 21:57:25                                            */
+/*   Updated:  2023/09/23 18:44:11                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@
 #pragma clang diagnostic ignored "-Wempty-translation-unit"
 #pragma clang diagnostic ignored "-Wunused-macros"
 
+static int	handle_zero(char *tab)
+{
+	tab[0] = '0';
+	tab[1] = ' ';
+	return (2);
+}
+
 static int	put_nbr_in_tab(unsigned long int nbr, char *tab)
 {
 	int					i;
 	unsigned long int	magnitude;
 	unsigned long int	aux;
 
+	if (nbr == 0)
+		return (handle_zero(tab));
 	i = 0;
 	aux = nbr;
 	magnitude = 0;
@@ -35,11 +44,6 @@ static int	put_nbr_in_tab(unsigned long int nbr, char *tab)
 		if (magnitude == 0)
 			magnitude = 1;
 		i++;
-	}
-	if (magnitude == 0)
-	{
-		 magnitude++;
-		 i++;
 	}
 	while (magnitude)
 	{

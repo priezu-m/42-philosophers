@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 15:03:23                                            */
-/*   Updated:  2023/09/19 17:47:01                                            */
+/*   Updated:  2023/09/23 19:33:16                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static t_loger_queque	get_loger_queque(int number_of_philosophers)
 }
 
 t_loger_data	get_loger_data(volatile _Atomic bool *simulation_over,
-		int last_needed_meals_needed, int number_of_philosophers)
+		int number_of_philosophers)
 {
 	t_loger_data	loger_data;
 
 	loger_data.loger_queque = get_loger_queque(number_of_philosophers);
-	loger_data.last_needed_meals_needed = last_needed_meals_needed;
+	loger_data.last_needed_meals_needed = number_of_philosophers;
 	loger_data.launch_aborted = false;
 	loger_data.simulation_over = simulation_over;
 	return (loger_data);

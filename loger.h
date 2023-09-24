@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 14:23:18                                            */
-/*   Updated:  2023/09/20 13:14:22                                            */
+/*   Updated:  2023/09/23 19:33:26                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct loger_data
 }t_loger_data;
 
 t_loger_data	get_loger_data(volatile _Atomic bool *simulation_over,
-					int last_needed_meals_needed, int number_of_philosophers);
+					int number_of_philosophers);
 void			destroy_loger_data(t_loger_data loger_data);
 bool			loger_data_valid(t_loger_data loger_data);
 void			launch_loger(t_loger_data *loger_data);

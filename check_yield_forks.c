@@ -6,12 +6,12 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/19 13:29:28                                            */
-/*   Updated:  2023/09/21 01:17:09                                            */
+/*   Updated:  2023/09/24 00:21:19                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "schedueler.h"
-#include "mutex_sequential_action.h"
+#include "mutex_action_no_ownership_transfer.h"
 
 ;
 #pragma clang diagnostic push
@@ -32,17 +32,17 @@ void	yield_right_fork(t_schedueler_data *schedueler_data, int reciver)
 		forks[0] = e_requested_and_gotten;
 		if (forks[1] == e_default_fork_state || forks[1] == e_requested)
 			return ;
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
 		(*schedueler_data->number_of_active_philosophers)++;
-		mutex_sequential_action(e_mutex_unlock,
-			&schedueler_data->mutexs[reciver - 1]);
+		mutex_action_no_ownership_transfer(e_mutex_unlock,
+			&schedueler_data->mutexs[reciver - 1],
+			&schedueler_data->mutex_locked_check[reciver - 1]);
 	}
 	else if (forks[1] == e_requested_and_gotten)
 	{
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
 		(*schedueler_data->number_of_active_philosophers)++;
-		mutex_sequential_action(e_mutex_unlock,
-			&schedueler_data->mutexs[reciver - 1]);
+		mutex_action_no_ownership_transfer(e_mutex_unlock,
+			&schedueler_data->mutexs[reciver - 1],
+			&schedueler_data->mutex_locked_check[reciver - 1]);
 	}
 }
 
@@ -58,17 +58,17 @@ void	yield_left_fork(t_schedueler_data *schedueler_data, int reciver)
 		forks[1] = e_requested_and_gotten;
 		if (forks[0] == e_default_fork_state || forks[0] == e_requested)
 			return ;
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
 		(*schedueler_data->number_of_active_philosophers)++;
-		mutex_sequential_action(e_mutex_unlock,
-			&schedueler_data->mutexs[reciver - 1]);
+		mutex_action_no_ownership_transfer(e_mutex_unlock,
+			&schedueler_data->mutexs[reciver - 1],
+			&schedueler_data->mutex_locked_check[reciver - 1]);
 	}
 	else if (forks[0] == e_requested_and_gotten)
 	{
-		schedueler_data->mutex_locked_check[reciver - 1] = false;
 		(*schedueler_data->number_of_active_philosophers)++;
-		mutex_sequential_action(e_mutex_unlock,
-			&schedueler_data->mutexs[reciver - 1]);
+		mutex_action_no_ownership_transfer(e_mutex_unlock,
+			&schedueler_data->mutexs[reciver - 1],
+			&schedueler_data->mutex_locked_check[reciver - 1]);
 	}
 }
 

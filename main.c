@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/15 20:12:31                                            */
-/*   Updated:  2023/09/17 17:18:57                                            */
+/*   Updated:  2023/09/23 19:33:55                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static t_simulation_data	get_simulation_data(int argc, char **argv)
 			simulation_data.parameters.number_of_philosophers,
 			&simulation_over);
 	simulation_data.loger_data = get_loger_data(&simulation_over,
-			simulation_data.parameters.number_of_meals_needed,
 			simulation_data.parameters.number_of_philosophers);
 	simulation_data.philosopher_list = get_philosopher_list(&simulation_over,
 			simulation_data.parameters,
@@ -103,6 +102,11 @@ int	main(int argc, char **argv)
 		print_usage();
 		return (EXIT_FAILURE);
 	}
+	if (simulation_data.parameters.number_of_meals_needed == 0)
+	{
+		destroy_simulation_data(simulation_data);
+		return (EXIT_SUCCESS);
+	}
 	if (simulation_data_valid(simulation_data) == false)
 	{
 		destroy_simulation_data(simulation_data);
@@ -111,6 +115,7 @@ int	main(int argc, char **argv)
 	}
 	launch_and_join_threads(simulation_data);
 	destroy_simulation_data(simulation_data);
+	return (EXIT_SUCCESS);
 }
 
 #pragma clang diagnostic pop

@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 20:23:00                                            */
-/*   Updated:  2023/09/22 13:26:45                                            */
+/*   Updated:  2023/09/23 18:44:46                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ void	print_event_sequential(t_loger_queque loger_queque, t_event event,
 	loger_queque.request_queque[aux].event_data.time_of_issuing
 		= current_time / 1000;
 	if (current_time == ULONG_MAX)
-	{
 		loger_queque.request_queque[aux].event_data.event_id
 			= e_simulation_aborted;
-	}
 	loger_queque.request_queque[aux].requests_comleted = false;
 	local_mutex--;
 }

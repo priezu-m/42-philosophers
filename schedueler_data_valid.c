@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/09/17 13:22:00                                            */
-/*   Updated:  2023/09/17 22:51:00                                            */
+/*   Updated:  2023/09/23 18:42:16                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	schedueler_data_valid(t_schedueler_data schedueler_data)
 	const int	number_of_philosophers = schedueler_data.number_of_philosophers;
 
 	if (
-		schedueler_data.number_of_active_philosophers == NULL 
+		schedueler_data.number_of_active_philosophers == NULL
 		|| schedueler_data.mutex_initialized == NULL
 		|| schedueler_data.mutex_locked_check == NULL
 		|| schedueler_data.simulation_over == NULL
