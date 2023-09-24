@@ -98,6 +98,7 @@ void	eat(t_philosopher *self)
 	{
 		print_event_sequential(self->loger_queque, e_philosopher_died,
 			self->philosopher_number);
+		block_self(self);
 	}
 	print_began_to_eat(self);
 	block_self(self);
