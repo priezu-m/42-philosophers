@@ -1,24 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: check_yield_forks.c                                            */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 13:29:28                                            */
-/*   Updated:  2023/09/24 00:21:19                                            */
+/*                                                        :::      ::::::::   */
+/*   check_yield_forks.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:17:11 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:18:53 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "schedueler.h"
 #include "mutex_action_no_ownership_transfer.h"
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	yield_right_fork(t_schedueler_data *schedueler_data, int reciver)
 {
@@ -98,5 +91,3 @@ void	check_fork_yields(t_schedueler_data *schedueler_data)
 	schedueler_data->yields.private_queque_index
 		%= schedueler_data->yields.queque_size;
 }
-
-#pragma clang diagnostic pop

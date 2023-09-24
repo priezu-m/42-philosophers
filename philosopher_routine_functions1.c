@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: philosopher_routine_functions1.c                               */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 17:15:47                                            */
-/*   Updated:  2023/09/24 00:09:08                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopher_routine_functions1.c                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:40 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:44 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 static unsigned long int	get_new_time_trunc(unsigned long int current_time,
 		int time_to_add)
@@ -124,5 +117,3 @@ void	sleep_self(t_philosopher *self)
 		self->philosopher_number);
 	block_self(self);
 }
-
-#pragma clang diagnostic pop

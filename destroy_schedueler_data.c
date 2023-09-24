@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: destroy_schedueler_data.c                                      */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/16 16:24:59                                            */
-/*   Updated:  2023/09/24 17:42:20                                            */
+/*                                                        :::      ::::::::   */
+/*   destroy_schedueler_data.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:19:42 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:20:02 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdint.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 static void	destroy_mutexs(pthread_mutex_t *mutexs, bool *mutex_initialized,
 		volatile _Atomic bool *mutex_locked_check, int number_of_philosophers)
@@ -71,5 +64,3 @@ void	destroy_schedueler_data(t_schedueler_data schedueler_data)
 	destroy_time_list(schedueler_data.times_of_awaking);
 	destroy_time_list(schedueler_data.times_of_finishing_meal);
 }
-
-#pragma clang diagnostic pop

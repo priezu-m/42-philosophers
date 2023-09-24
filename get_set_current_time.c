@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: get_set_current_time.c                                         */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 14:36:04                                            */
-/*   Updated:  2023/09/24 17:42:00                                            */
+/*                                                        :::      ::::::::   */
+/*   get_set_current_time.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:57 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:22:00 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 #include "loger.h"
 #include <sys/time.h>
 #include <limits.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
 
 unsigned long int	get_set_current_time(t_get_or_set_current_time get_or_set)
 {
@@ -44,5 +38,3 @@ unsigned long int	get_set_current_time(t_get_or_set_current_time get_or_set)
 	return (((unsigned long)diff.tv_sec * 1000000ul)
 		+ ((unsigned long)diff.tv_usec));
 }
-
-#pragma clang diagnostic pop

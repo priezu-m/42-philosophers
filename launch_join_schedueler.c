@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: launch_join_schedueler.c                                       */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 17:29:26                                            */
-/*   Updated:  2023/09/17 22:56:52                                            */
+/*                                                        :::      ::::::::   */
+/*   launch_join_schedueler.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "schedueler.h"
 #include <pthread.h>
 #include <stdbool.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
 
 void	launch_schedueler(t_schedueler_data *schedueler_data)
 {
@@ -31,5 +25,3 @@ void	join_schedueler(t_schedueler_data schedueler_data)
 {
 	pthread_join(schedueler_data.thread_id, NULL);
 }
-
-#pragma clang diagnostic pop

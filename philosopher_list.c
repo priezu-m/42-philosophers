@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: philosopher_list.c                                             */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 16:47:27                                            */
-/*   Updated:  2023/09/19 17:02:21                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopher_list.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:19:54 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:20:00 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
 #include "philosopher.h"
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 t_philosopher	*get_philosopher_list(volatile _Atomic bool *simulation_over,
 					t_parameters parameters, t_schedueler_data schedueler_data,
@@ -63,5 +56,3 @@ void	destroy_philosopher_list(t_philosopher *philosopher_list)
 {
 	free(philosopher_list);
 }
-
-#pragma clang diagnostic pop

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: loger_routine.c                                                */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 20:23:00                                            */
-/*   Updated:  2023/09/23 18:44:46                                            */
+/*                                                        :::      ::::::::   */
+/*   loger_routine.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:18:37 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:18:49 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 #include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	print_event_sequential(t_loger_queque loger_queque, t_event event,
 		int issuer_id)
@@ -121,5 +114,3 @@ void	*loger_routine(void *arg)
 	set_all_to_completed(&loger_data->loger_queque);
 	return (NULL);
 }
-
-#pragma clang diagnostic pop

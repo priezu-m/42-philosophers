@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: time.h                                                         */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 14:51:08                                            */
-/*   Updated:  2023/09/23 18:01:11                                            */
+/*                                                        :::      ::::::::   */
+/*   time.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:40 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:44 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TIME_H
 # define TIME_H
-
-;
-# pragma clang diagnostic push
-# pragma clang diagnostic warning "-Weverything"
-# pragma clang diagnostic ignored "-Wempty-translation-unit"
-# pragma clang diagnostic ignored "-Wunused-macros"
 
 typedef enum e_get_or_set_current_time
 {
@@ -26,7 +20,5 @@ typedef enum e_get_or_set_current_time
 }t_get_or_set_current_time;
 
 unsigned long int	get_set_current_time(t_get_or_set_current_time	get_or_set);
-
-# pragma clang diagnostic pop
 
 #endif

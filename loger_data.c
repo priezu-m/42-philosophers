@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: loger_data.c                                                   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 15:03:23                                            */
-/*   Updated:  2023/09/23 19:33:16                                            */
+/*                                                        :::      ::::::::   */
+/*   loger_data.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:15:46 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:16:33 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdint.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 static t_loger_queque	get_loger_queque(int number_of_philosophers)
 {
@@ -67,5 +60,3 @@ bool	loger_data_valid(t_loger_data loger_data)
 		return (false);
 	return (true);
 }
-
-#pragma clang diagnostic pop

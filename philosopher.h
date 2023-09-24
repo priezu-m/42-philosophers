@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: philosopher.h                                                  */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/15 15:13:37                                            */
-/*   Updated:  2023/09/22 12:54:56                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopher.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:18:41 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:18:48 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 # include "events.h"
 # include <stdbool.h>
 # include <pthread.h>
-
-;
-# pragma clang diagnostic push
-# pragma clang diagnostic warning "-Weverything"
-# pragma clang diagnostic ignored "-Wempty-translation-unit"
-# pragma clang diagnostic ignored "-Wunused-macros"
-# pragma clang diagnostic ignored "-Wc11-extensions"
 
 typedef struct s_philosopher
 {
@@ -58,7 +51,5 @@ void			yield_forks(t_philosopher *self);
 void			eat(t_philosopher *self);
 void			sleep_self(t_philosopher *self);
 void			think(t_philosopher *self);
-
-# pragma clang diagnostic pop
 
 #endif

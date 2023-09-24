@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: schedueler_loop.c                                              */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/24 17:44:01                                            */
-/*   Updated:  2023/09/24 17:44:58                                            */
+/*                                                        :::      ::::::::   */
+/*   schedueler_loop.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:19:57 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:19:59 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "schedueler.h"
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	schedueler_loop(t_schedueler_data *schedueler_data)
 {
@@ -40,5 +33,3 @@ void	schedueler_loop(t_schedueler_data *schedueler_data)
 			schedueler_data->mutexs, schedueler_data->mutex_locked_check);
 	}
 }
-
-#pragma clang diagnostic pop

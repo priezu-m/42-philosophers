@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: loger.h                                                        */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/15 14:23:18                                            */
-/*   Updated:  2023/09/23 19:33:26                                            */
+/*                                                        :::      ::::::::   */
+/*   loger.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:40 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:43 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 # include "events.h"
 # include <stdbool.h>
 # include <pthread.h>
-
-;
-# pragma clang diagnostic push
-# pragma clang diagnostic warning "-Weverything"
-# pragma clang diagnostic ignored "-Wempty-translation-unit"
-# pragma clang diagnostic ignored "-Wunused-macros"
-# pragma clang diagnostic ignored "-Wc11-extensions"
 
 # define BUFFER_SIZE 10000
 
@@ -74,7 +67,5 @@ void			print_event_sequential(t_loger_queque loger_queque,
 					int issuer_id);
 void			log_buffer(t_buffer_action action, char *msg, int msg_size);
 void			push_data_to_buffer(t_event_data data);
-
-# pragma clang diagnostic pop
 
 #endif

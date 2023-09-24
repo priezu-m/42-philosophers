@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: philosopher_routine.c                                          */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 20:26:11                                            */
-/*   Updated:  2023/09/23 23:32:50                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopher_routine.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 #include <pthread.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	think(t_philosopher *self)
 {
@@ -65,5 +58,3 @@ void	*philosopher_routine(void *arg)
 	}
 	return (NULL);
 }
-
-#pragma clang diagnostic pop

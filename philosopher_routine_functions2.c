@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: philosopher_routine_functions2.c                               */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 17:18:25                                            */
-/*   Updated:  2023/09/23 21:21:53                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopher_routine_functions2.c                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:57 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:22:00 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include "philosopher.h"
 #include "time.h"
 #include "mutex_action_no_ownership_transfer.h"
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	block_self(t_philosopher *self)
 {
@@ -93,5 +86,3 @@ void	yield_forks(t_philosopher *self)
 	yield_forks_internal(self->schedueler_data.yields,
 		self->philosopher_number);
 }
-
-#pragma clang diagnostic pop

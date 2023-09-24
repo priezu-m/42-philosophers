@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: get_schedueler_data.c                                          */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/16 14:51:38                                            */
-/*   Updated:  2023/09/24 17:43:28                                            */
+/*                                                        :::      ::::::::   */
+/*   get_schedueler_data.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:40 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:43 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include <pthread.h>
 #include <stdbool.h>
 #include <stdint.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 static t_fork_yield_queque	get_yield_queque(int number_of_philosophers)
 {
@@ -96,5 +89,3 @@ t_schedueler_data	get_schedueler_data(int number_of_philosophers,
 		schedueler_data.mutex_locked_check, number_of_philosophers);
 	return (schedueler_data);
 }
-
-#pragma clang diagnostic pop

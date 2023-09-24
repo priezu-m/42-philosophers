@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: schedueler.h                                                   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/15 14:40:25                                            */
-/*   Updated:  2023/09/24 17:44:27                                            */
+/*                                                        :::      ::::::::   */
+/*   schedueler.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:16:16 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:16:32 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 
 # include <pthread.h>
 # include <stdbool.h>
-
-;
-# pragma clang diagnostic push
-# pragma clang diagnostic warning "-Weverything"
-# pragma clang diagnostic ignored "-Wempty-translation-unit"
-# pragma clang diagnostic ignored "-Wunused-macros"
-# pragma clang diagnostic ignored "-Wc11-extensions"
 
 # define NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED 4
 
@@ -89,7 +82,5 @@ void				check_time_list(
 						pthread_mutex_t *mutexs,
 						volatile _Atomic bool *mutex_locked_check);
 void				schedueler_loop(t_schedueler_data *schedueler_data);
-
-# pragma clang diagnostic pop
 
 #endif

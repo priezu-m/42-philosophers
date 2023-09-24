@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: loger_buffer.c                                                 */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/20 13:11:15                                            */
-/*   Updated:  2023/09/23 18:44:11                                            */
+/*                                                        :::      ::::::::   */
+/*   loger_buffer.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:57 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:22:00 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "loger.h"
 #include <unistd.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
 
 static int	handle_zero(char *tab)
 {
@@ -104,5 +98,3 @@ void	log_buffer(t_buffer_action action, char *msg, int msg_size)
 	write(STDOUT_FILENO, buffer, (unsigned)(index));
 	index = 0;
 }
-
-#pragma clang diagnostic pop

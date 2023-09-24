@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: schedueler_data_valid.c                                        */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 13:22:00                                            */
-/*   Updated:  2023/09/23 18:42:16                                            */
+/*                                                        :::      ::::::::   */
+/*   schedueler_data_valid.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:18:46 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:18:47 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "schedueler.h"
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
 
 bool	schedueler_data_valid(t_schedueler_data schedueler_data)
 {
@@ -45,5 +39,3 @@ bool	schedueler_data_valid(t_schedueler_data schedueler_data)
 		return (false);
 	return (true);
 }
-
-#pragma clang diagnostic pop

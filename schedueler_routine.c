@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: schedueler_routine.c                                           */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 20:27:52                                            */
-/*   Updated:  2023/09/24 17:44:59                                            */
+/*                                                        :::      ::::::::   */
+/*   schedueler_routine.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 #include <pthread.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 static void	unlock_uneven(t_schedueler_data *schedueler_data)
 {
@@ -110,5 +103,3 @@ void	*schedueler_routine(void *arg)
 	unlock_all(schedueler_data);
 	return (NULL);
 }
-
-#pragma clang diagnostic pop

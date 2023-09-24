@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: give_initial_forks.c                                           */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 14:33:28                                            */
-/*   Updated:  2023/09/19 14:34:09                                            */
+/*                                                        :::      ::::::::   */
+/*   give_initial_forks.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:16:27 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:16:34 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "schedueler.h"
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	give_initial_forks(volatile _Atomic t_fork_state (*fork_sate)[2],
 		int number_of_philosophers)
@@ -42,5 +35,3 @@ void	give_initial_forks(volatile _Atomic t_fork_state (*fork_sate)[2],
 		fork_sate[i][1] = e_gotten;
 	}
 }
-
-#pragma clang diagnostic pop

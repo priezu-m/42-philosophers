@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: events.h                                                       */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/15 12:03:08                                            */
-/*   Updated:  2023/09/19 17:30:45                                            */
+/*                                                        :::      ::::::::   */
+/*   events.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:17 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:21:21 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
-
-;
-# pragma clang diagnostic push
-# pragma clang diagnostic warning "-Weverything"
-# pragma clang diagnostic ignored "-Wempty-translation-unit"
-# pragma clang diagnostic ignored "-Wunused-macros"
 
 typedef enum e_event
 {
@@ -32,7 +26,5 @@ typedef enum e_event
 	e_simulation_aborted,
 	e_philosopher_died
 }t_event;
-
-# pragma clang diagnostic pop
 
 #endif

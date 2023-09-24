@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: check_time_list.c                                              */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/19 14:35:10                                            */
-/*   Updated:  2023/09/23 22:03:24                                            */
+/*                                                        :::      ::::::::   */
+/*   check_time_list.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:16:23 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:16:35 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 #include "mutex_action_no_ownership_transfer.h"
 #include <limits.h>
 #include <stdbool.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	check_time_list(t_time_list *time_list,
 		int volatile _Atomic *number_of_active_philosophers,
@@ -52,5 +45,3 @@ void	check_time_list(t_time_list *time_list,
 	mutex_action_no_ownership_transfer(e_mutex_unlock,
 		&mutexs[id - 1], &mutex_locked_check[id - 1]);
 }
-
-#pragma clang diagnostic pop

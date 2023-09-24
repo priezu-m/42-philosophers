@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: parameters.c                                                   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/16 14:24:48                                            */
-/*   Updated:  2023/09/20 21:21:47                                            */
+/*                                                        :::      ::::::::   */
+/*   parameters.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:21:57 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:22:00 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parameters.h"
 #include <limits.h>
 #include <stdio.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
 
 static void	print_usage_part_one(void)
 {
@@ -108,5 +102,3 @@ t_parameters	get_parameters(int argc, char **argv)
 	parameters.parameters_valid = true;
 	return (parameters);
 }
-
-#pragma clang diagnostic pop

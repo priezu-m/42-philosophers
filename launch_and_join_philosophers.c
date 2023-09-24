@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: launch_and_join_philosophers.c                                 */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/17 17:56:15                                            */
-/*   Updated:  2023/09/17 22:56:21                                            */
+/*                                                        :::      ::::::::   */
+/*   launch_and_join_philosophers.c                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 18:18:33 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/24 18:18:52 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 #include <pthread.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-;
-#pragma clang diagnostic push
-#pragma clang diagnostic warning "-Weverything"
-#pragma clang diagnostic ignored "-Wempty-translation-unit"
-#pragma clang diagnostic ignored "-Wunused-macros"
-#pragma clang diagnostic ignored "-Watomic-implicit-seq-cst"
 
 void	launch_and_join_philosophers(t_philosopher *philosopher_list)
 {
@@ -50,5 +43,3 @@ void	launch_and_join_philosophers(t_philosopher *philosopher_list)
 		i++;
 	}
 }
-
-#pragma clang diagnostic pop
