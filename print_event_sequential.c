@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: print_event_sequential.c                                       */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/09/24 19:34:08                                            */
-/*   Updated:  2023/09/24 19:34:51                                            */
+/*                                                        :::      ::::::::   */
+/*   print_event_sequential.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/25 16:52:52 by priezu-m          #+#    #+#             */
+/*   Updated: 2023/09/25 16:52:54 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
