@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Filename: main.c                                                         */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:19:51 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:20:01 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/25 02:03:29                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static t_simulation_data	get_simulation_data(int argc, char **argv)
 			simulation_data.parameters,
 			simulation_data.schedueler_data,
 			simulation_data.loger_data.loger_queque);
+	simulation_data.schedueler_data.loger_data = simulation_data.loger_data;
 	return (simulation_data);
 }
 

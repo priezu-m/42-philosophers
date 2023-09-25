@@ -6,13 +6,13 @@
 #    By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/24 18:11:35 by priezu-m          #+#    #+#              #
-#    Updated:  2023/09/24 23:50:49                                             #
+#    Updated:  2023/09/25 03:38:19                                             #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -flto -O2 -pthread
+CFLAGS = -Wall -Wextra -Werror -flto -O2 -pthread -g3
 SRC = check_time_list.c give_initial_forks.c loger_data.c \
 	  check_yield_forks.c launch_and_join_philosophers.c \
 	  loger_routine.c schedueler_data_valid.c \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   schedueler.h                                       :+:      :+:    :+:   */
+/*   Filename: schedueler.h                                                   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:16:16 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/09/24 18:16:32 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/09/25 02:04:53                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <pthread.h>
 # include <stdbool.h>
+# include "loger.h"
 
 # define NUMBER_OF_ACTIVE_PHILOSOPHERS_WANTED 4
 
@@ -46,6 +47,7 @@ typedef struct s_time_list
 
 typedef struct s_schedueler_data
 {
+	t_loger_data						loger_data;
 	volatile _Atomic int				*number_of_active_philosophers;
 	pthread_mutex_t						*mutexs;
 	bool								*mutex_initialized;
@@ -82,5 +84,7 @@ void				check_time_list(
 						pthread_mutex_t *mutexs,
 						volatile _Atomic bool *mutex_locked_check);
 void				schedueler_loop(t_schedueler_data *schedueler_data);
+void				check_time_of_death_list(
+						t_schedueler_data *schedueler_data);
 
 #endif
